@@ -38,6 +38,8 @@ console.log(typeof fruits);
 
 
 
+
+
 //! Numbers 
 let num = 10.1
 

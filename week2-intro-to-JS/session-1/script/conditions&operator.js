@@ -37,6 +37,7 @@ console.log("Logical AND (&&):", c && d);
 console.log("Logical OR (||):", c || d);
 console.log("Logical NOT (!):", !c);
 
+
 const num = 10;
 const str = "JavaScript";
 const isActive = true;
@@ -122,3 +123,13 @@ switch (day) {
     default:
         console.log("Invalid day");
 }
+
+
+let age = 18;
+
+if (age >= 18) {
+    console.log("You are eligible to vote.");
+} else {
+    console.log("You are not eligible to vote.");
+}
+age >= 18 ? console.log("true") : console.log("false");

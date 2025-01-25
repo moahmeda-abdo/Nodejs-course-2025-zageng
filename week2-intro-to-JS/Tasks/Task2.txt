@@ -1,0 +1,39 @@
+You are creating a system to manage student grades. Follow the steps below:
+
+1- Create an Array of Student Objects
+Each student should have the following properties:
+
+name (string)
+grades (array of numbers, e.g., [80, 90, 100])
+
+
+2- Write a Function to Calculate the Average Grade
+Create a function calculateAverage(grades) that takes an array of grades and returns the average grade.
+
+3- Filter Passed Students
+A student passes if their average grade is 70 or above.
+
+4- Sort Students by Average Grade (Descending)
+
+5- Print Results
+
+
+
+Expected Output :
+
+Mohamed: Average = 90, Passed = true
+Ali: Average = 65, Passed = false
+Salah: Average = 93.33, Passed = true
+
+Passed Students: ["Mohamed", "Salah"]
+
+
+
+hint : The array of objects will be : 
+
+const students = [
+    { name: "Mohamed", grades: [80, 90, 100], passed: false },
+    { name: "Ali", grades: [60, 70, 65], passed: false },
+    { name: "Salah", grades: [85, 95, 100], passed: false },
+  ];
+  
