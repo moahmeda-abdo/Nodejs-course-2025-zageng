@@ -1,0 +1,6 @@
+Task: Fetch data from JSON file  (data.json) using try & catch & async & await
+and perform the following operations on these data.
+1- Display All Product Names in the Console.
+2- Filter Products That Are in Stock.
+3- Calculate the Total Price of All Products.
+4- Find the Most Expensive Product.
