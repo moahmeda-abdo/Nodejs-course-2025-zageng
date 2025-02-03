@@ -18,7 +18,7 @@ const arabicMonths = [
 const getPreviousMonth = (currentMonth, currentYear) => {
   let previousMonthIndex = currentMonth - 1;
   let previousYear = currentYear;
-  const cur = new Date()
+
 
   if (previousMonthIndex < 0) {
     previousMonthIndex = 11;

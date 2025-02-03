@@ -74,7 +74,7 @@ console.log(admin1);
 
 // Encapsulation Example
 class Employee {
-    #salary; // Private Field
+    #salary;
 
     constructor(name, age, salary) {
         this.name = name;
