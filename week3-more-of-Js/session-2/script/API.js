@@ -30,8 +30,7 @@ fetch("https://jsonplaceholder.typicode.com/posts")
 async function getData() {
         try {
                 const res = await fetch("https://jsonplaceholder.typicode.com/posts")
-                throw new Error("error from getData")
-
+                // throw new Error("error from getData")
                 const data = await res.json()
                 console.log(data)
 
