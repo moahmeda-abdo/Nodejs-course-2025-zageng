@@ -1,0 +1,7 @@
+Create a Node.js server with http module that listens on port 3000 with the following endpoints:
+
+1️⃣ /students → Returns the full list of
+2️⃣ /students/active → Returns only active students.
+3️⃣ /students/inactive → Returns only inactive students.
+4️⃣ /students/top → Returns the student with the highest average grade.
+5️⃣ /students/fail → Returns students who failed (average grade < 60).
