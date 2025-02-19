@@ -42,11 +42,11 @@ server.listen(PORT, () => {
 // console.log("File Extension:", path.extname(filePath));
 
 
-// console.log("Operating System:", os.platform());
-// console.log("CPU Architecture:", os.arch());
-// console.log("Total Memory (GB):", os.totalmem() / 1024 / 1024 / 1024);
-// console.log("Free Memory (GB):", os.freemem() / 1024 / 1024 / 1024);
-// console.log("Home Directory:", os.homedir());
+console.log("Operating System:", os.platform());
+console.log("CPU Architecture:", os.arch());
+console.log("Total Memory (GB):", os.totalmem() / 1024 / 1024 / 1024);
+console.log("Free Memory (GB):", os.freemem() / 1024 / 1024 / 1024);
+console.log("Home Directory:", os.homedir());
 
 
 
