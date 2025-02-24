@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Alice",
+        "grades": [
+            85,
+            90,
+            78
+        ],
+        "status": "active",
+        "email": "m6rGy@example.com",
+        "password": "1234567"
+    },
+    {
+        "id": 2,
+        "name": "Bob",
+        "grades": [
+            70,
+            60,
+            75
+        ],
+        "status": "inactive",
+        "email": "m6rGy@example.com",
+        "password": "1234567"
+    },
+    {
+        "id": 3,
+        "name": "Charlie",
+        "grades": [
+            92,
+            88,
+            95
+        ],
+        "status": "active",
+        "email": "m6rGy@example.com",
+        "password": "1234567"
+    }
+]
