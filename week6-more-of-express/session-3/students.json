@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name": "Alice",
+        "grades": [
+            85,
+            90,
+            78
+        ],
+        "status": "active"
+    },
+    {
+        "id": 2,
+        "name": "Bob",
+        "grades": [
+            70,
+            60,
+            75
+        ],
+        "status": "inactive"
+    },
+    {
+        "id": 3,
+        "name": "Charlie",
+        "grades": [
+            92,
+            88,
+            95
+        ],
+        "status": "active"
+    },
+    {
+        "id": 4,
+        "name": "David",
+        "grades": [
+            50,
+            55,
+            40
+        ],
+        "status": "active"
+    },
+    {
+        "id": 5,
+        "name": "Eva",
+        "grades": [
+            88,
+            79,
+            85
+        ],
+        "status": "inactive"
+    }
+]
