@@ -90,7 +90,12 @@ export const GetOneTodoController = async (req, res) => {
 
 export const GetAllTodoController = async (req, res) => {
   try {
-    const todos = await Todo.find();
+    const { startDate, endDate, isCompleted, title } = req.query;
+    const sDate = new Date(startDate);
+    const eDate = new Date(endDate);
+
+
+    const todos = await Todo.find({ title: { $regex: title , $options: "i"} });
 
     if (todos.length === 0) {
       const error = new Error("Todos not found");
