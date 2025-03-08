@@ -66,11 +66,13 @@ Each **book** should have:
 
 ---
 
-### 5. Additional Requirements
+4. Additional Requirements
 
 * Use **environment variables** (`dotenv`) to store sensitive information like the database connection string.
 * Separate **routes, controllers, and models** following MVC principles.
 * Return **proper HTTP status codes** and error messages.
+* organize your postman collection
+* Create a folder named **"**postman\_screenshots**"** and capture screenshots for each request in your Postman collection. Add all screenshots to this folder.create a folder called "postman_screenshots" and take a screenshot for very request in your postam collection and add it to this folder
 
 ## Submission
 
