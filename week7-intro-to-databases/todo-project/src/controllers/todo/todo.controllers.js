@@ -1,3 +1,4 @@
+import { InternalServerError, NotFoundError } from "../../errors/Errors.js";
 import { Todo } from "../../models/todo/todo.model.js";
 
 export const CreateTodoController = async (req, res) => {
@@ -13,10 +14,10 @@ export const CreateTodoController = async (req, res) => {
         message: "Todo created successfully",
       });
     } else {
-      throw new Error("Cannot create todo");
+      throw new InternalServerError();
     }
   } catch (error) {
-    res.status(500).json({
+    res.status(error.statusCode).json({
       message: error.message,
     });
   }
@@ -30,9 +31,7 @@ export const UpdateTodoController = async (req, res) => {
     const todo = await Todo.findByIdAndUpdate(id, data, { new: true });
 
     if (!todo) {
-      const error = new Error("Todo not found");
-      error.statusCode = 404;
-      throw error;
+      throw new NotFoundError("todo not found");
     }
 
     res.status(200).json({
@@ -52,9 +51,7 @@ export const DeleteTodoController = async (req, res) => {
     const deletedTodo = await Todo.findByIdAndDelete(id);
 
     if (!deletedTodo) {
-      const error = new Error("Todo not found");
-      error.statusCode = 404;
-      throw error;
+      throw new NotFoundError("todo not found");
     }
 
     res.status(204);
@@ -72,9 +69,7 @@ export const GetOneTodoController = async (req, res) => {
     const todo = await Todo.findById(id);
 
     if (!todo) {
-      const error = new Error("Todo not found");
-      error.statusCode = 404;
-      throw error;
+      throw new NotFoundError("todo not found");
     }
 
     res.status(200).json({
@@ -90,17 +85,11 @@ export const GetOneTodoController = async (req, res) => {
 
 export const GetAllTodoController = async (req, res) => {
   try {
-    const { startDate, endDate, isCompleted, title } = req.query;
-    const sDate = new Date(startDate);
-    const eDate = new Date(endDate);
-
-
-    const todos = await Todo.find({ title: { $regex: title , $options: "i"} });
+    const query = buildQuery(req);
+    const todos = await Todo.find(query);
 
     if (todos.length === 0) {
-      const error = new Error("Todos not found");
-      error.statusCode = 404;
-      throw error;
+    } else {
     }
 
     res.status(200).json({
@@ -113,3 +102,22 @@ export const GetAllTodoController = async (req, res) => {
     });
   }
 };
+
+function buildQuery(req) {
+  const { startDate, endDate, title, isCompleted } = req.query;
+
+  const query = {
+    ...(title && { title: { $regex: title, $options: "i" } }),
+    ...(isCompleted && { is_completed: isCompleted }),
+  };
+
+  if (startDate || endDate) {
+    query.createdAt = {
+      ...(startDate && { $gte: new Date(startDate) }),
+      ...(endDate && { $lte: new Date(endDate) }),
+    };
+  }
+
+  return query;
+}
+//24-2-2402

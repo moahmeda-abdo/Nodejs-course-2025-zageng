@@ -3,6 +3,7 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import { todoRouter } from "./routes/todo/todo.routes.js";
 import morgan from "morgan";
+import { authRouter } from "./routes/auth/auth.routes.js";
 
 const app = express();
 
@@ -29,3 +30,4 @@ app.use(morgan("dev"));
 //routes
 
 app.use("/todo", todoRouter);
+app.use("/auth" , authRouter)
