@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { SignUpController } from "../../controllers/auth/auth.controller.js";
+import { SignInController, SignUpController } from "../../controllers/auth/auth.controller.js";
 
 
 
@@ -7,7 +7,7 @@ const router = Router()
 
 
 router.post('/signup', SignUpController)
-// router.post('/login', LoginController)
+router.post('/signin', SignInController)
 
 
 export { router as authRouter }
