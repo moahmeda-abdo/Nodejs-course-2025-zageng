@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { todoRouter } from "./routes/todo/todo.routes.js";
 import morgan from "morgan";
 import { authRouter } from "./routes/auth/auth.routes.js";
+import { authenticateToken } from "./middleware/authenticateToken.middlware.js";
 
 const app = express();
 
@@ -29,5 +30,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 //routes
 
+app.use("/auth", authRouter);
+
+app.use(authenticateToken);
 app.use("/todo", todoRouter);
-app.use("/auth" , authRouter)

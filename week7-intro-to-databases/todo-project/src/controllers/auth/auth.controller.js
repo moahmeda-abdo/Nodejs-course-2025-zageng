@@ -19,15 +19,15 @@ export const SignUpController = async (req, res) => {
     const hashedPassword = await hashPassword(data.password);
 
     const newUser = await User({ ...data, password: hashedPassword });
-
-    const token = generateToken(newUser.name, newUser.email, newUser.phone);
-
+    const token = generateToken(newUser.name, newUser.email, newUser.phone , user._id);
+    
     await newUser.save();
-
+    
     res.status(200).json({
       data: newUser,
       token,
     });
+    
   } catch (error) {
     res.status(error.statusCode || 500).json({
       message: error.message || "server error",
@@ -51,7 +51,8 @@ export const SignInController = async (req, res) => {
       throw new BadRequestError("invalid password or email");
     }
 
-    const token = generateToken(user.name, user.email, user.phone);
+    const token = generateToken(user.name, user.email, user.phone , user._id);
+
     res.status(200).json({
       data: user,
       token,

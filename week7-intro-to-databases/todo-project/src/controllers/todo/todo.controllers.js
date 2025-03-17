@@ -4,8 +4,9 @@ import { Todo } from "../../models/todo/todo.model.js";
 export const CreateTodoController = async (req, res) => {
   try {
     const data = req.body;
+    const user = req.user
 
-    const newTodo = await Todo(data);
+    const newTodo = await Todo({...data , user:user._id});
     await newTodo.save();
 
     if (newTodo) {

@@ -23,3 +23,8 @@ export class InternalServerError extends CustomError {
     super(message, 500);
   }
 }
+export class UnAuthorizedError extends CustomError {
+  constructor(message = "Un Authorized") {
+    super(message, 401);
+  }
+}
