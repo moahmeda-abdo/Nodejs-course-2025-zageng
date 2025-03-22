@@ -4,9 +4,9 @@ import { Todo } from "../../models/todo/todo.model.js";
 export const CreateTodoController = async (req, res) => {
   try {
     const data = req.body;
-    const user = req.user
+    const user = req.user;
 
-    const newTodo = await Todo({...data , user:user._id});
+    const newTodo = await Todo({ ...data, user: user._id });
     await newTodo.save();
 
     if (newTodo) {
@@ -87,10 +87,12 @@ export const GetOneTodoController = async (req, res) => {
 export const GetAllTodoController = async (req, res) => {
   try {
     const query = buildQuery(req);
-    const todos = await Todo.find(query);
+    const user = req.user;
+    const todos = await Todo.find({ ...query, user: user._id });
 
     if (todos.length === 0) {
     } else {
+      
     }
 
     res.status(200).json({
