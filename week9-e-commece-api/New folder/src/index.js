@@ -7,6 +7,7 @@ import { authRouter } from "./api/routes/auth/auth.routes.js";
 import helmet from "helmet";
 import cors from "cors";
 import { productsRouter } from "./api/routes/products/index.js";
+import { categoriesRouter } from "./api/routes/categories/index.js";
 const app = express();
 
 app.listen(process.env.PORT, () => {
@@ -41,6 +42,7 @@ app.use("/auth", authRouter);
 
 // app.use(authenticateToken);
 app.use("/products", productsRouter);
+app.use("/categories", categoriesRouter);
 
 //!routes & models
 
