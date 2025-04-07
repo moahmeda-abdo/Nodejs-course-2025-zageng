@@ -8,6 +8,12 @@ import helmet from "helmet";
 import cors from "cors";
 import { productsRouter } from "./api/routes/products/index.js";
 import { categoriesRouter } from "./api/routes/categories/index.js";
+import path from "path"
+import { fileURLToPath } from "url";
+
+const ___filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(___filename);
+
 const app = express();
 
 app.listen(process.env.PORT, () => {
@@ -36,6 +42,9 @@ app.use(cors(corsOptions)); //self-study
 app.use(helmet()); //self-study
 app.use(express.json());
 app.use(morgan("dev"));
+
+//! serving static files 
+app.use("/public" , express.static(path.join(__dirname , "../public")))
 //routes
 
 app.use("/auth", authRouter);
