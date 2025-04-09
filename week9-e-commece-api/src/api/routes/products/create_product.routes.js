@@ -19,6 +19,7 @@ const CreateProduct = async (req ,res) => {
       data: newProduct,
     });
   } catch (error) {
+    console.log(error)
     res.status(error.statusCode).json({
       message: error.message,
     });

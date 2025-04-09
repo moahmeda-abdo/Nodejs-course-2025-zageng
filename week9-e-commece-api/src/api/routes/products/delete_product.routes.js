@@ -1,22 +1,20 @@
 import { Router } from "express";
 import { BadRequestError, NotFoundError } from "../../../core/errors/Errors.js";
 import { Product } from "../../models/products/product.model.js";
+import { authorize } from "../../../core/middleware/authorizeUsers.middlware.js";
 
 const router = Router();
 
-const DeleteProduct = async (req ,res) => {
+const DeleteProduct = async (req, res) => {
   const { id } = req.params;
   try {
-    
-    const product = await Product.findByIdAndUpdate(id ,{ is_deleted: true });
+    const product = await Product.findByIdAndUpdate(id, { is_deleted: true });
 
     if (!product) {
       throw new NotFoundError("Product not found");
     }
     await product.save();
-    res.status(204).json()
-    
-
+    res.status(204).json();
   } catch (error) {
     res.status(error.statusCode).json({
       message: error.message,
@@ -24,6 +22,6 @@ const DeleteProduct = async (req ,res) => {
   }
 };
 
-router.delete("/:id", DeleteProduct);
+router.delete("/:id", authorize(["admin"]), DeleteProduct);
 
 export { router as deleteProductRouter };

@@ -4,11 +4,13 @@ import { Product } from "../../models/products/product.model.js";
 
 const router = Router();
 
-const GetProduct = async (req ,res) => {
+const GetProduct = async (req, res) => {
   const { id } = req.params;
   try {
-    
-    const product = await Product.findOne({_id : id , is_deleted : false});
+    const product = await Product.findOne({
+      _id: id,
+      is_deleted: false,
+    }).populate({ path: "category", select: "name" });
 
     if (!product) {
       throw new NotFoundError("Product not found");
@@ -17,8 +19,7 @@ const GetProduct = async (req ,res) => {
     res.status(200).json({
       message: "Product found successfully",
       data: product,
-    })
-    
+    });
   } catch (error) {
     res.status(error.statusCode).json({
       message: error.message,
