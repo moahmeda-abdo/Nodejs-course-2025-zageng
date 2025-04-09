@@ -9,7 +9,7 @@ import { categoriesRouter } from "./api/routes/categories/index.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import { authRouter } from "./api/routes/auth/index.js";
-import { authenticateToken } from "./core/middleware/authenticateToken.middlware.js";
+import { authenticateToken } from "./core/middleware/authenticateToken.middleware.js";
 
 const ___filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(___filename);

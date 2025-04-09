@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { BadRequestError, NotFoundError } from "../../../core/errors/Errors.js";
 import { Product } from "../../models/products/product.model.js";
-import { authorize } from "../../../core/middleware/authorizeUsers.middlware.js";
+import { authorize } from "../../../core/middleware/authorizeUsers.middleware.js";
 
 const router = Router();
 
