@@ -2,14 +2,14 @@ import express from "express";
 import "dotenv/config";
 import mongoose from "mongoose";
 import morgan from "morgan";
-import { authRouter } from "./api/routes/auth/auth.routes.js";
-// import { authenticateToken } from "./middleware/authenticateToken.middlware.js";
 import helmet from "helmet";
 import cors from "cors";
 import { productsRouter } from "./api/routes/products/index.js";
 import { categoriesRouter } from "./api/routes/categories/index.js";
-import path from "path"
+import path from "path";
 import { fileURLToPath } from "url";
+import { authRouter } from "./api/routes/auth/index.js";
+import { authenticateToken } from "./core/middleware/authenticateToken.middlware.js";
 
 const ___filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(___filename);
@@ -32,6 +32,7 @@ const connectToDb = async () => {
 
 connectToDb();
 
+
 const corsOptions = {
   origin: "http://localhost:3300",
   optionsSuccessStatus: 200,
@@ -43,13 +44,11 @@ app.use(helmet()); //self-study
 app.use(express.json());
 app.use(morgan("dev"));
 
-//! serving static files 
-app.use("/public" , express.static(path.join(__dirname , "../public")))
-//routes
+//! serving static files
+app.use("/public", express.static(path.join(__dirname, "../public")));
 
 app.use("/auth", authRouter);
-
-// app.use(authenticateToken);
+app.use(authenticateToken);
 app.use("/products", productsRouter);
 app.use("/categories", categoriesRouter);
 
