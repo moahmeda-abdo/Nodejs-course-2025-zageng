@@ -4,7 +4,8 @@ import { verifyToken } from "../services/jwt.service.js";
 
 export const authenticateToken = async (req, res, next) => {
   try {
-    const token = req.headers["authorization"];
+    const authHeader = req.headers["authorization"];
+    const token = authHeader.split(" ")[1];
 
     if (!token) {
       throw new UnAuthorizedError("Token Not provided");

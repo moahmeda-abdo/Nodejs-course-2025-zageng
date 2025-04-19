@@ -1,14 +1,16 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-  price: { type: Number },
-  name: { type: String },
-  description: { type: String },
-  category: { type: mongoose.Schema.Types.ObjectId, ref: "category" },
+  price: { type: Number }, // number - positive value - required
+  name: { type: String }, //string - max length 100
+  description: { type: String }, 
+  category: { type: mongoose.Schema.Types.ObjectId, ref: "category" }, // category id
   image: { type: String },
   rating: { type: Number },
-  brand: { type: String },
+  brand: { type: String }, // samsung
   is_deleted: { type: Boolean, default: false }, //true
+},{
+  timestamps: true
 });
 
 export const Product = mongoose.model("product", productSchema);
