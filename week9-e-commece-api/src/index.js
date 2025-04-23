@@ -10,6 +10,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { authRouter } from "./api/routes/auth/index.js";
 import { authenticateToken } from "./core/middleware/authenticateToken.middleware.js";
+import { cartRouter } from "./api/routes/cart/index.js";
 
 const ___filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(___filename);
@@ -51,6 +52,7 @@ app.use("/auth", authRouter);
 app.use(authenticateToken);
 app.use("/products", productsRouter);
 app.use("/categories", categoriesRouter);
+app.use("/cart", cartRouter);
 
 //!routes & models
 
@@ -59,5 +61,3 @@ app.use("/categories", categoriesRouter);
 //! categories
 //! orders
 //! cart
-
-//! payments
