@@ -32,7 +32,7 @@ const CreateOrder = async (req, res) => {
         })
         userCart.items = [];
         userCart.total_price = 0;
-
+        await userCart.save();
         await newOrder.save();
 
         res.status(201).json({
