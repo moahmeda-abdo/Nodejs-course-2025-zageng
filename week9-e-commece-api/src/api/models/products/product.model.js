@@ -8,6 +8,7 @@ const productSchema = new mongoose.Schema({
   image: { type: String },
   rating: { type: Number },
   brand: { type: String }, // samsung
+  stock: { type: Number },
   is_deleted: { type: Boolean, default: false }, //true
 },{
   timestamps: true

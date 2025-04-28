@@ -11,6 +11,7 @@ import { fileURLToPath } from "url";
 import { authRouter } from "./api/routes/auth/index.js";
 import { authenticateToken } from "./core/middleware/authenticateToken.middleware.js";
 import { cartRouter } from "./api/routes/cart/index.js";
+import { ordersRouter } from "./api/routes/orders/index.js";
 
 const ___filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(___filename);
@@ -50,6 +51,7 @@ app.use("/public", express.static(path.join(__dirname, "../public")));
 
 app.use("/auth", authRouter);
 app.use(authenticateToken);
+app.use("/orders", ordersRouter);
 app.use("/products", productsRouter);
 app.use("/categories", categoriesRouter);
 app.use("/cart", cartRouter);
