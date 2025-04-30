@@ -14,13 +14,14 @@ const CreateOrder = async (req, res) => {
         if (!userCart) throw new NotFoundError("Cart not found");
 
         if (userCart.items.length === 0) throw new BadRequestError("Cart is empty");
+        
+        const products = await Product.find({ is_deleted: false, _id: { $in: userCart.items.map((item) => item.product) } })
 
-
-        userCart.items.map(async (item) => {
-            const prod = await Product.findById({ _id: item.product, is_deleted: false });
-            if (!prod) throw new NotFoundError("Product not found");
-            if (prod.stock < item.quantity) throw new BadRequestError("Product out of stock")
-            prod.stock -= item.quantity;
+        products.forEach(async (prod) => {
+            if (prod.stock < userCart.items.find((item) => item.product.toString() === prod._id.toString()).quantity) {
+                throw new BadRequestError(`Product ${prod.name} is out of stock`);
+            }
+            prod.stock -= userCart.items.find((item) => item.product.toString() === prod._id.toString()).quantity;
             await prod.save();
         })
 

@@ -6,7 +6,7 @@ import { BadRequestError } from "../../../core/errors/Errors.js";
 const router = Router();
 
 const AddToCart = async (req, res) => {
-  const { productId, quantity } = req.body;
+  const { productId , quantity } = req.body;
   const user = req.user;
   const userId = user._id;
   try {
